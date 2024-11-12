@@ -16,6 +16,9 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NoWarn>NU1701</NoWarn>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>  
   <ItemGroup>
     <PackageReference Include="Oxide.Core" Version="2.0.*" />
     <Reference Include="MySql.Data">

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading;
+using CommandApp;
 
 namespace Oxide.Core.MySql.Libraries
 {
@@ -225,6 +226,8 @@ namespace Oxide.Core.MySql.Libraries
 
         public Connection OpenDb(string conStr, Plugin plugin, bool persistent = false)
         {
+            Utf8mb3.Enable();
+            conStr += ";commandinterceptors=CommandApp.Interceptor," + typeof(CommandApp.Interceptor).Assembly.FullName;
             Dictionary<string, Connection> connections;
             if (!_connections.TryGetValue(plugin?.Name ?? "null", out connections))
             {
